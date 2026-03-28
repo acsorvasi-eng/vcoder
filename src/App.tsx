@@ -11,7 +11,7 @@ async function gen(cmd: string, existing: string) {
   const d = await r.json();
   const t = d.content?.map((b: any) => b.text || "").join("") || "";
   const m = t.replace(/```json\s*/gi,"").replace(/```/g,"").trim().match(/\{[\s\S]*\}/);
-  if (!m) throw new Error("Próbáld egyszerűbben.");
+if (!m) throw new Error(t.slice(0, 200));
   return JSON.parse(m[0]);
 }
 
